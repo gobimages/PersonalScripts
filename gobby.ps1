@@ -1,6 +1,8 @@
+$Secure_String_Pwd = ConvertTo-SecureString "P@ssW0rD!" -AsPlainText -Force
 Install-WindowsFeature -name AD-Domain-Services -IncludeManagementTools
 Import-Module ADDSDEployment
 Install-ADDSForest 
+-SafeModeAdministratorPassword $Secure_String_Pwd
 -CreateDnsDelegation:$false 
 -DatabasePath 'C:\Windows\NTDS' 
 -DomainMode 'Win2012R2' 
